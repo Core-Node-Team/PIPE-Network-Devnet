@@ -78,6 +78,10 @@ EOF
 pipe-tool login --node-registry-url="https://rpc.pipedev.network"
 ```
 NOT: karekod çıkıcak yukarsında adres ve bir kod siteye git kodu gir mail bağla tamamlanınca sunucuda tamamlanıcak.
+
+![image](https://github.com/user-attachments/assets/95ad2deb-e2b1-4ac1-9ef6-c4a2801ae3dd)
+
+
 ```
 pipe-tool generate-registration-token --node-registry-url="https://rpc.pipedev.network"
 ```
