@@ -111,10 +111,10 @@ pipe-tool list-nodes --node-registry-url="https://rpc.pipedev.network"
 ```
 ### Yedeklemek için
 ```
-pipe-tool show-private-key
+pipe-tool show-private-key --key-path=$HOME/.permissionless/key.json
 ```
 ```
-pipe-tool show-public-key
+pipe-tool show-public-key --key-path=$HOME/.permissionless/key.json
 ```
 
 
