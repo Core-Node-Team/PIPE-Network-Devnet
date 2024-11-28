@@ -88,6 +88,7 @@ sudo systemctl enable dcdnd
 sudo systemctl restart dcdnd
 ```
 ### Loglar
+NOT: bişi göstermıyor loglar hata olursa atuyor sanırım.
 ```
 sudo journalctl -f -u dcdnd.service
 ```
