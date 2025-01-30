@@ -1,0 +1,99 @@
+# PIPE DEVNET2
+
+[Official Guide](https://docs.pipe.network/devnet-2)
+
+## Sistem güncellemesi
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+## Gerekli port açılışı
+
+```bash
+sudo ufw allow 8003/tcp
+```
+
+## Dizinleri oluşturma
+
+```bash
+mkdir -p $HOME/download_cache
+sudo mkdir -p $HOME/pipe
+```
+
+## POP binary indirme ve yetkilendirme
+
+```bash
+POP="MAİLDENGELENLİNKİYAPIŞTIR"
+cd $HOME/pipe
+wget -O pop "$POP"
+chmod +x pop
+```
+
+## Servis dosyası oluşturma
+
+- Burada servis içine ram, max kullanmasını istediğiniz disk ve cüzdan adresinizi yazacaksınız.
+
+```bash
+sudo tee /etc/systemd/system/popd.service > /dev/null << EOF
+[Unit]
+Description=Pipe POP Node Service
+After=network.target
+Wants=network-online.target
+
+[Service]
+User=$USER
+ExecStart=$(echo $HOME)/pipe/pop --ram=12 --pubKey 2mhHHAiqbzGKKwWe6agmgFGRQgYKSwfNzEyEvgupgF3D --max-disk 175 --cache-dir $(echo $HOME)/download_cache
+Restart=always
+RestartSec=5
+LimitNOFILE=65536
+LimitNPROC=4096
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=dcdn-node
+WorkingDirectory=$HOME/pipe
+
+[Install]
+WantedBy=multi-user.target
+EOF
+```
+
+## İzinleri ayarlama
+
+```bash
+sudo chown -R $USER:$USER $HOME/pipe
+sudo chown -R $USER:$USER $HOME/download_cache
+```
+
+## Servisi başlatma
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable popd
+sudo systemctl start popd
+```
+
+## Servis durumunu kontrol etme
+
+```bash
+sudo systemctl status popd
+```
+
+## Log takibi için
+
+```bash
+sudo journalctl -u popd -fo cat
+```
+
+## Diğer Komutlar
+ilk önce `cd $HOME/pipe` sonra komutlar. Komutları kullanırken node_info.json'dan bilgi çekiyor. Bu yüzden ana dizinde direkt `pop` yazarak kullanamıyoruz.
+
+- `./pop --status` metrik için
+
+- `./pop --points-route` puan kontrolü için
+
+- `./pop --gen-referral-route` referans kodu üretme
+
+- `./pop --signup-by-referral-route KODUYAZ` ile de aldığınız referansla kaydolabilirsiniz. `888085259b07a50f` kullanmak isterseniz benim ürettiğim budur. Bunu kullanabilmeniz için muhtemelen `sudo systemctl start popd` ile başlatmadan önce dizinde kodu gimeniz gerekebilir.
+
+Not: 2.50'de mail geldi. Sabaha doğru 4.50 gibi bitti. Uykusuzlukla hata yaptıysam affola.
