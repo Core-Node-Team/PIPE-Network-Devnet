@@ -32,7 +32,7 @@ chmod +x pop
 
 ## Servis dosyası oluşturma
 
-- Burada servis içine ram, max kullanmasını istediğiniz disk ve cüzdan adresinizi yazacaksınız.
+- Burada servis içine ram, max kullanmasını istediğiniz disk ve cüzdan adresinizi yazacaksınız.pubkey yazın
 
 ```bash
 sudo tee /etc/systemd/system/popd.service > /dev/null << EOF
@@ -43,7 +43,7 @@ Wants=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(echo $HOME)/pipe/pop --ram=12 --pubKey 2mhHHAiqbzGKKwWe6agmgFGRQgYKSwfNzEyEvgupgF3D --max-disk 175 --cache-dir $(echo $HOME)/download_cache
+ExecStart=$(echo $HOME)/pipe/pop --ram=12 --pubKey pubkey-yazaro --max-disk 175 --cache-dir $(echo $HOME)/download_cache
 Restart=always
 RestartSec=5
 LimitNOFILE=65536
