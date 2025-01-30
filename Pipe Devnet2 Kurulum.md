@@ -32,7 +32,7 @@ chmod +x pop
 
 ## Servis dosyası oluşturma
 
-- Burada servis içine ram, max kullanmasını istediğiniz disk ve cüzdan adresinizi yazacaksınız.pubkey yazın
+- Burada servis içine ram, max kullanmasını istediğiniz disk ve cüzdan adresinizi yazacaksınız.pubkey yazın pubkey yane cüzdan adresidir bilocan
 
 ```bash
 sudo tee /etc/systemd/system/popd.service > /dev/null << EOF
