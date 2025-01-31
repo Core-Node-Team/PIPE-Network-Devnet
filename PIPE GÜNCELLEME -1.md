@@ -22,4 +22,16 @@ cd $HOME/pipe && ./pop --refresh
 ./pop --status
 ```
 
+## Bi de restart atalım
+
+```bash
+sudo systemctl restart popd
+```
+
+## Logu kontrol edelim
+
+```bash
+sudo journalctl -u popd -fo cat --since "1 hour ago"
+```
+
 Tamamlandı!
