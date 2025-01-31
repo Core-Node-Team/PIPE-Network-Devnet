@@ -3,6 +3,8 @@
 ## Dede ile ilk önce dashboard'dan güncelleme linkimizi alalım. Komutun çıktısındaki url'yi kopyalayın bi kenara.
 
 ```bash
+cd $HOME
+sudo systemctl stop popd
 cd $HOME/pipe && ./pop --status
 ```
 
@@ -10,8 +12,9 @@ cd $HOME/pipe && ./pop --status
 
 ```bash
 cd $HOME
-wget dashborddaki-url
+wget https://dl.pipecdn.app/v0.2.1/pop
 chmod +x ./pop
+rm -rf $HOME/pipe/pop
 mv $HOME/pop $HOME/pipe/pop
 cd $HOME/pipe && ./pop --refresh
 ```
