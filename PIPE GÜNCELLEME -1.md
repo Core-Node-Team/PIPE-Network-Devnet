@@ -12,7 +12,7 @@ cd $HOME/pipe && ./pop --status
 
 ```bash
 cd $HOME
-wget https://dl.pipecdn.app/v0.2.1/pop
+wget linki-yaz
 chmod +x ./pop
 rm -rf $HOME/pipe/pop
 mv $HOME/pop $HOME/pipe/pop
