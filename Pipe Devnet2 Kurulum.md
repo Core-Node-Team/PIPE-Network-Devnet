@@ -2,6 +2,10 @@
 
 [Official Guide](https://docs.pipe.network/devnet-2)
 
+# Dashboard
+
+https://dashboard.pipenetwork.com/node-lookup
+
 ## Sistem güncellemesi
 
 ```bash
