@@ -25,10 +25,10 @@ mkdir -p $HOME/download_cache
 sudo mkdir -p $HOME/pipe
 ```
 
-## POP binary indirme ve yetkilendirme
+## POP binary indirme ve yetkilendirme (kurduğun zamanki son versiyona göre linki değiştirebilirsin.)
 
 ```bash
-POP="MAİLDENGELENLİNKİYAPIŞTIR"
+POP=https://dl.pipecdn.app/v0.2.7/pop
 cd $HOME/pipe
 wget -O pop "$POP"
 chmod +x pop
@@ -47,15 +47,17 @@ Wants=network-online.target
 
 [Service]
 User=$USER
-ExecStart=$(echo $HOME)/pipe/pop --ram=12 --pubKey pubkey-yazaro --max-disk 175 --cache-dir $(echo $HOME)/download_cache
+ExecStart=$(echo $HOME)/pipe/pop --ram=12 --pubKey Solana_Adresi_Yaz --max-disk 175 --cache-dir $(echo $HOME)/download_cache --no-prompt
 Restart=always
 RestartSec=5
 LimitNOFILE=65536
 LimitNPROC=4096
 StandardOutput=journal
 StandardError=journal
-SyslogIdentifier=dcdn-node
+SyslogIdentifier=pop-node
 WorkingDirectory=$HOME/pipe
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
 
 [Install]
 WantedBy=multi-user.target
